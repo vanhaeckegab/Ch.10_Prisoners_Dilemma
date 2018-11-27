@@ -8,9 +8,8 @@ Each strategy plays 100 to 200 rounds against each other strategy.
 The results of all previous rounds within a 100-200 round stretch are known
 to both players.
 
-Pressing the green arrow button and then entering
-play_tournament() in the iSession window will run the tournament and
-store the output in tournament.txt
+Running this file and entering the number of teams in the tournament will run
+the tournament and store the output in tournament.txt
 
 Teams should each code their strategies in their assigned section of code.
 '''
