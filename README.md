@@ -1,4 +1,4 @@
-<img align="left" src="http://hermonswebsites.com/Classes/CS/python.png"><H2><a href="https://sites.google.com/urbandaleschools.com/pythonjedi/10-prisoners-dilemma" target="_blank">Chapter 10 Prisoner's Dilemma Game</a></H2>
+<img align="left" src="http://hermonswebsites.com/Classes/CS/python.png"><H2>Chapter 10 Prisoner's Dilemma Game</H2>
 
 In this chapter you will practice some of the things you've learned so far while also learning about Game Theory. 
 
