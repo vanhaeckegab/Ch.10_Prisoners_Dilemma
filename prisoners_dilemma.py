@@ -711,8 +711,12 @@ def play_tournament(num_players):
                str("{:.2f}".format((scores[player])/num_players)) , ' points: ',
                team_names[player])
 
-howmanyteams=int(input("How many teams do you want to run in this tournament? Max:17  "))
-if howmanyteams>17:
-    play_tournament(17)
-else:
-    play_tournament(howmanyteams)
+def main():
+    howmanyteams=int(input("How many teams do you want to run in this tournament? Max:17  "))
+    if howmanyteams>17:
+        play_tournament(17)
+    else:
+        play_tournament(howmanyteams)
+
+if __name__=="__main__":
+    main()
