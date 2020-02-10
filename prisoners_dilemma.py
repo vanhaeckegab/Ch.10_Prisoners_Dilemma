@@ -153,23 +153,21 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team3: Paranoid
-    #Team Members: Nellie, Tristan, Julie
+    #Team3: Enter Team Name Here
+    #Team Members:
     #######################################
 
 
     elif player == 3:
         if getting_team_name:
-            return 'Paranoid'
+            return 'Enter Team Name Here'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
             elif history[-1]=='c' and opponent_history[-1]=='b':
                 return 'b' # betray if they were severely punished last time
-            elif history[-1]=='b':
-                return 'b' #betray until end
             else:
-                return 'c' #collude if not yet betrayed
+                return 'c' #otherwise collude
 
 
 
@@ -335,22 +333,22 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team9: Enter Team Name Here
-    #Team Members:
+    #Team9: Paranoid
+    #Team Members: Tristan
     #######################################
-
 
     elif player == 9:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Paranoid'
         else:
-            if len(opponent_history)==0: #It's the first round: collude
+            if len(opponent_history) == 0:  # It's the first round: collude
                 return 'c'
-            elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray if they were severely punished last time
+            elif history[-1] == 'c' and opponent_history[-1] == 'b':
+                return 'b'  # betray if they were severely punished last time
+            elif history[-1] == 'b':
+                return 'b'  # betray until end
             else:
-                return 'c' #otherwise collude
-
+                return 'c'  # collude if not yet betrayed
 
 
 
@@ -720,5 +718,5 @@ def main():
     else:
         play_tournament(howmanyteams)
 
-if __name__=="__main__":
+if __name__== "__main__":
     main()
