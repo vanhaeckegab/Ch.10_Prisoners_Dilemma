@@ -220,12 +220,17 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
     elif player == 5:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Macbowl'
         else:
-            if len(opponent_history)==0: #It's the first round: collude
+            if len(opponent_history)==0:  #It's the first round: collude
                 return 'c'
             elif history[-1]=='c' and opponent_history[-1]=='b':
                 return 'b' # betray if they were severely punished last time
+            if len(opponent_history)>2:
+                    if history[-2:]=='cc' and opponent_history[-2:]=='cc':
+                        return 'b'
+                    elif history[-2:]=='bb' and opponent_history[-2:]=='bb':
+                        return 'c'
             else:
                 return 'c' #otherwise collude
 
