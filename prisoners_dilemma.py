@@ -190,7 +190,7 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
     elif player == 4:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Em&Cal'
         else:
             if len(opponent_history)==0:
                 return 'b'
