@@ -153,8 +153,8 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team3: Enter Team Name Here
-    #Team Members:
+    #Team3: Lol
+    #Team Members: Nellie, Julie
     #######################################
 
     elif player == 3:
