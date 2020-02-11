@@ -213,8 +213,8 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team5: Enter Team Name Here
-    #Team Members:
+    #Team5: Macbowl
+    #Team Members: Steven, Henry
     #######################################
 
 
@@ -224,12 +224,14 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
         else:
             if len(opponent_history)==0:  #It's the first round: collude
                 return 'c'
+            elif len(opponent_history)>=54: #At 54th time return b
+                return 'b'
             elif history[-1]=='c' and opponent_history[-1]=='b':
                 return 'b' # betray if they were severely punished last time
-            if len(opponent_history)>2:
-                    if history[-2:]=='cc' and opponent_history[-2:]=='cc':
+            elif len(opponent_history)>2:
+                    if history[-2:]=='cc' and opponent_history[0:]=='c':
                         return 'b'
-                    elif history[-2:]=='bb' and opponent_history[-2:]=='bb':
+                    else:
                         return 'c'
             else:
                 return 'c' #otherwise collude
