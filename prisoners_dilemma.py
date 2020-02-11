@@ -273,14 +273,14 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team7: Enter Team Name Here
-    #Team Members:
+    #Team7: L.B.
+    #Team Members: Lily B.
     #######################################
 
 
     elif player == 7:
         if getting_team_name:
-            return 'Lily B.'
+            return 'L.B.'
         else:
             if len(opponent_history) == 0:  # It's the first round: collude
                 return 'c'
