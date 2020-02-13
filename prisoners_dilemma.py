@@ -316,18 +316,21 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
     #Team8: Enter Team Name Here
-    #Team Members:
+    #Team Members: Peggy & Catherine
     #######################################
 
 
     elif player == 8:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Hermonious Capensis'
         else:
-            if len(opponent_history)==0: #It's the first round: collude
-                return 'c'
-            elif history[-1]=='c' and opponent_history[-1]=='b':
+            if len(opponent_history)==0: #  It's the first round: betray
+                return 'b'
+            elif opponent_history[-1]=='b':
                 return 'b' # betray if they were severely punished last time
+            elif len(opponent_history) >= 3:
+                if opponent_history[0] == "b":
+                    return 'b'  # betray if they were severely punished last time
             else:
                 return 'c' #otherwise collude
 
