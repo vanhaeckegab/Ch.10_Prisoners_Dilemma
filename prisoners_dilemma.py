@@ -8,8 +8,9 @@ Each strategy plays 100 to 200 rounds against each other strategy.
 The results of all previous rounds within a 100-200 round stretch are known
 to both players.
 
-Running this file and entering the number of teams in the tournament will run
-the tournament and store the output in tournament.txt
+Pressing the green arrow button and then entering
+play_tournament() in the iSession window will run the tournament and
+store the output in tournament.txt
 
 Teams should each code their strategies in their assigned section of code.
 '''
@@ -153,28 +154,21 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team3: Lol
-    #Team Members: Nellie, Julie
+    #Team3: Enter Team Name Here
+    #Team Members:
     #######################################
+
 
     elif player == 3:
         if getting_team_name:
-            return 'Lol'
+            return 'Enter Team Name Here'
         else:
-            if len(opponent_history) == 0:
+            if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
-            # elif history[-1] == 'c' and opponent_history[-2:] == 'b':
-            #     return 'b'
-            # elif opponent_history[-1] == 'b':
-            #     return 'b'
-            # elif opponent_history[-1]== 'c':
-            #     return 'c'
-            elif opponent_history[0] == 'b':
-                return 'b'
-            elif opponent_history[0] == 'c':
-                return 'c'
+            elif history[-1]=='c' and opponent_history[-1]=='b':
+                return 'b' # betray if they were severely punished last time
             else:
-                return 'c'
+                return 'c' #otherwise collude
 
 
 
@@ -186,21 +180,25 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team4: Em+Cal
-    #Team Members: Cal and Emma
+
+
+
+
+    #Team4: Enter Team Name Here
+    #Team Members:
     #######################################
 
 
     elif player == 4:
         if getting_team_name:
-            return 'Em&Cal'
+            return 'Enter Team Name Here'
         else:
-            if len(opponent_history)==0:
-                return 'b'
-            elif opponent_history[-1]=='b':
+            if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
+            elif history[-1]=='c' and opponent_history[-1]=='b':
+                return 'b' # betray if they were severely punished last time
             else:
-                return 'b'
+                return 'c' #otherwise collude
 
 
 
@@ -216,26 +214,19 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team5: Macbowl
-    #Team Members: Steven, Henry
+    #Team5: Enter Team Name Here
+    #Team Members:
     #######################################
 
 
     elif player == 5:
         if getting_team_name:
-            return 'Macbowl'
+            return 'Enter Team Name Here'
         else:
-            if len(opponent_history)==0:  #It's the first round: collude
+            if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
-            elif len(opponent_history)>=54: #At 54th time return b
-                return 'b'
             elif history[-1]=='c' and opponent_history[-1]=='b':
                 return 'b' # betray if they were severely punished last time
-            elif len(opponent_history)>2:
-                    if history[-2:]=='cc' and opponent_history[0:]=='c':
-                        return 'b'
-                    else:
-                        return 'c'
             else:
                 return 'c' #otherwise collude
 
@@ -283,54 +274,19 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team7: L.B.
-    #Team Members: Lily B.
+    #Team7: Enter Team Name Here
+    #Team Members:
     #######################################
 
 
     elif player == 7:
         if getting_team_name:
-            return 'L.B.'
+            return 'Enter Team Name Here'
         else:
-            if len(opponent_history) == 0:  # It's the first round: collude
+            if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
-            elif history[-1] == 'c' and opponent_history[-1] == 'b':
-                return 'b'  # betray if they were severely punished last time
-            elif opponent_history[-2:] == 'bb':
-                return 'b'
-            else:
-                return 'c'  # otherwise collude
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #Team8: Enter Team Name Here
-    #Team Members: Peggy & Catherine
-    #######################################
-
-
-    elif player == 8:
-        if getting_team_name:
-            return 'Hermonious Capensis'
-        else:
-            if len(opponent_history)==0: #  It's the first round: betray
-                return 'b'
-            elif opponent_history[-1]=='b':
+            elif history[-1]=='c' and opponent_history[-1]=='b':
                 return 'b' # betray if they were severely punished last time
-            elif len(opponent_history) >= 3:
-                if opponent_history[0] == "b":
-                    return 'b'  # betray if they were severely punished last time
             else:
                 return 'c' #otherwise collude
 
@@ -348,46 +304,81 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team9: Paranoid
-    #Team Members: Tristan
+    #Team8: Enter Team Name Here
+    #Team Members:
     #######################################
+
+
+    elif player == 8:
+        if getting_team_name:
+            return 'Enter Team Name Here'
+        else:
+            if len(opponent_history)==0: #It's the first round: collude
+                return 'c'
+            elif history[-1]=='c' and opponent_history[-1]=='b':
+                return 'b' # betray if they were severely punished last time
+            else:
+                return 'c' #otherwise collude
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #Team9: Enter Team Name Here
+    #Team Members:
+    #######################################
+
 
     elif player == 9:
         if getting_team_name:
-            return 'Paranoid'
+            return 'Enter Team Name Here'
         else:
-            if len(opponent_history) == 0:  # It's the first round: collude
+            if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
-            elif history[-1] == 'c' and opponent_history[-1] == 'b':
-                return 'b'  # betray if they were severely punished last time
-            elif history[-1] == 'b':
-                return 'b'  # betray until end
+            elif history[-1]=='c' and opponent_history[-1]=='b':
+                return 'b' # betray if they were severely punished last time
             else:
-                return 'c'  # collude if not yet betrayed
+                return 'c' #otherwise collude
 
 
 
 
-    # Team10:NSP
-    # Team Members:Kenny and Dylan
+
+
+
+
+
+
+
+
+
+
+
+    #Team10: Enter Team Name Here
+    #Team Members:
     #######################################
 
 
     elif player == 10:
         if getting_team_name:
-            return 'NSP'
+            return 'Enter Team Name Here'
         else:
-            if len(opponent_history) == 0 or len(opponent_history) == 1:  # It's the first round: collude
+            if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
-            elif opponent_history[-2] == 'b':
-                return 'b'
-            elif opponent_history[-2] == "b" and opponent_history[-1] == 'c':
-                return 'b'
-            elif opponent_history[-2] == "c" and opponent_history[-1] == 'b':
-                return 'b'
+            elif history[-1]=='c' and opponent_history[-1]=='b':
+                return 'b' # betray if they were severely punished last time
             else:
-                return 'c'  # otherwise collude
-
+                return 'c' #otherwise collude
 
 
 
@@ -720,7 +711,6 @@ def play_tournament(num_players):
         print('player ' + str(player) , ': ' ,
                str("{:.2f}".format((scores[player])/num_players)) , ' points: ',
                team_names[player])
-
 def main():
     howmanyteams=int(input("How many teams do you want to run in this tournament? Max:17  "))
     if howmanyteams>17:
@@ -728,5 +718,5 @@ def main():
     else:
         play_tournament(howmanyteams)
 
-if __name__== "__main__":
+if __name__=="__main__":
     main()
