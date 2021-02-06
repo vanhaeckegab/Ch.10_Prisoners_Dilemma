@@ -1,15 +1,13 @@
 '''
 NOTES:
-Version: 1
 
 Prisoners_Dilemma.py allows hard-coding of different strategies
 for the Iterative Prisoners Dilemma, the classic game of game-theory.
-Each strategy plays 100 to 200 rounds against each other strategy.
+Each strategy plays 100 to 200 rounds against each other's strategy.
 The results of all previous rounds within a 100-200 round stretch are known
 to both players.
 
-Pressing the green arrow button and then entering
-play_tournament() in the iSession window will run the tournament and
+Pressing the green arrow button will allow you to run the tournament and
 store the output in tournament.txt
 
 Teams should each code their strategies in their assigned section of code.
@@ -574,6 +572,122 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
+    #Team17: Enter Team Name Here
+    #Team Members:
+    #######################################
+
+
+    elif player == 17:
+        if getting_team_name:
+            return 'Enter Team Name Here'
+        else:
+            if len(opponent_history)==0: #It's the first round: collude
+                return 'c'
+            elif history[-1]=='c' and opponent_history[-1]=='b':
+                return 'b' # betray if they were severely punished last time
+            else:
+                return 'c' #otherwise collude
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #Team18: Enter Team Name Here
+    #Team Members:
+    #######################################
+
+
+    elif player == 18:
+        if getting_team_name:
+            return 'Enter Team Name Here'
+        else:
+            if len(opponent_history)==0: #It's the first round: collude
+                return 'c'
+            elif history[-1]=='c' and opponent_history[-1]=='b':
+                return 'b' # betray if they were severely punished last time
+            else:
+                return 'c' #otherwise collude
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #Team19: Enter Team Name Here
+    #Team Members:
+    #######################################
+
+
+    elif player == 19:
+        if getting_team_name:
+            return 'Enter Team Name Here'
+        else:
+            if len(opponent_history)==0: #It's the first round: collude
+                return 'c'
+            elif history[-1]=='c' and opponent_history[-1]=='b':
+                return 'b' # betray if they were severely punished last time
+            else:
+                return 'c' #otherwise collude
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #Team20: Enter Team Name Here
+    #Team Members:
+    #######################################
+
+
+    elif player == 20:
+        if getting_team_name:
+            return 'Enter Team Name Here'
+        else:
+            if len(opponent_history)==0: #It's the first round: collude
+                return 'c'
+            elif history[-1]=='c' and opponent_history[-1]=='b':
+                return 'b' # betray if they were severely punished last time
+            else:
+                return 'c' #otherwise collude
+
+
+
+
+
+
+
+
+
+
+
 
 def play_tournament(num_players):
     #create a list of zeros, one per player
@@ -712,9 +826,10 @@ def play_tournament(num_players):
                str("{:.2f}".format((scores[player])/num_players)) , ' points: ',
                team_names[player])
 def main():
-    howmanyteams=int(input("How many teams do you want to run in this tournament? Max:17  "))
-    if howmanyteams>17:
-        play_tournament(17)
+    howmanyteams=int(input("How many teams do you want to run in this tournament? Max:20  "))
+    howmanyteams+=1
+    if howmanyteams>21:
+        play_tournament(21)
     else:
         play_tournament(howmanyteams)
 
