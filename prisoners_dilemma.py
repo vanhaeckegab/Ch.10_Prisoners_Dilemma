@@ -450,13 +450,66 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
         if getting_team_name:
             return 'Joe Schmidt'
         else:
-            if len(opponent_history)==0: #It's the first round: collude
+            ctotal = 0
+            if len(opponent_history) == 0:  # It's the first round: collude
                 return 'c'
-            elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray if they were severely punished last time
             else:
-                return 'c' #otherwise collude
-
+                sanity = True
+                if opponent_history[-1] == 'b' and random.randint(0, 20) == 0:
+                        sanity = False   # This bitter betrayal has shown me how worthless and petty humanity truly is
+                for i in opponent_history:      # tests if psychopathic tendencies have been enabled
+                    if i == 'C' or i == 'B':
+                        sanity = False
+                if sanity:
+                    total = len(opponent_history)
+                    for i in opponent_history:          # calculates trust level based on average opponent action
+                        if i == "c":
+                            ctotal += 1
+                    trust = (ctotal / total) * 100
+                    if trust > 80:                      # makes a decision based on level of trust
+                        return 'c'
+                    elif trust > 70:
+                        if opponent_history[-1] == 'b':
+                            if random.randint(0, 4) == 0:
+                                return 'b'
+                            else:
+                                return 'c'
+                        else:
+                            return 'c'
+                    elif trust > 40:
+                        if opponent_history[-1] == 'b':
+                            return 'b'
+                        else:
+                            return 'c'
+                    elif trust > 20:
+                        if opponent_history[-1] == 'c':
+                            if random.randint(0, 2) == 0:
+                                return 'b'
+                            else:
+                                return 'c'
+                        else:
+                            return 'b'
+                    elif trust > 10:
+                        if opponent_history[-1] == 'c':
+                            if random.randint(0, 4) == 1:
+                                return 'c'
+                            else:
+                                return 'b'
+                        else:
+                            return 'b'
+                    else:
+                        if opponent_history[-1] == 'c':
+                            if random.randint(0, 10) == 0:
+                                return 'c'
+                            else:
+                                return 'b'
+                        else:
+                            return 'b'
+                else:
+                    if random.randint(0, 2) == 1:           # humanity is not worth the effort of a calculated decision
+                        return 'C'
+                    else:
+                        return 'B'
 
 
 
