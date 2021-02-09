@@ -152,14 +152,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team3: Enter Team Name Here
-    #Team Members:
+    #Team3: Aaron Caltrider
     #######################################
 
 
     elif player == 3:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Aaron Caltrider'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
@@ -182,14 +181,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team4: Enter Team Name Here
-    #Team Members:
+    #Team4: Tom Dau
     #######################################
 
 
     elif player == 4:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Tom Dau'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
@@ -212,14 +210,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team5: Enter Team Name Here
-    #Team Members:
+    #Team5: Bryce Getz
     #######################################
 
 
     elif player == 5:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Bryce Getz'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
@@ -242,14 +239,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team6: Enter Team Name Here
-    #Team Members:
+    #Team6: Ethan Januszewski
     #######################################
 
 
     elif player == 6:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Ethan Januszewski'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
@@ -272,14 +268,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team7: Enter Team Name Here
-    #Team Members:
+    #Team7: Gerardo Lopez Santiago
     #######################################
 
 
     elif player == 7:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Gerardo Lopez Santiago'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
@@ -302,14 +297,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team8: Enter Team Name Here
-    #Team Members:
+    #Team8: Alex Mears
     #######################################
 
 
     elif player == 8:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Alex Mears'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
@@ -332,14 +326,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team9: Enter Team Name Here
-    #Team Members:
+    #Team9: Daniel Mitchell
     #######################################
 
 
     elif player == 9:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Daniel Mitchell'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
@@ -362,14 +355,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team10: Enter Team Name Here
-    #Team Members:
+    #Team10: Ryan Mullins
     #######################################
 
 
     elif player == 10:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Ryan Mullins'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
@@ -392,14 +384,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team11: Enter Team Name Here
-    #Team Members:
+    #Team11: Ian Neyens
     #######################################
 
 
     elif player == 11:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Ian Neyens'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
@@ -422,14 +413,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team12: Enter Team Name Here
-    #Team Members:
+    #Team12: Jacob Perman
     #######################################
 
 
     elif player == 12:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Jacob Perman'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
@@ -452,14 +442,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team13: Enter Team Name Here
-    #Team Members:
+    #Team13: Joe Schmidt
     #######################################
 
 
     elif player == 13:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Joe Schmidt'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
@@ -482,14 +471,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team14: Enter Team Name Here
-    #Team Members:
+    #Team14: Bawi Thawng
     #######################################
 
 
     elif player == 14:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Bawi Thawng'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
@@ -512,14 +500,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team15: Enter Team Name Here
-    #Team Members:
+    #Team15: Jacob Walters
     #######################################
 
 
     elif player == 15:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Jacob Walters'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
@@ -542,14 +529,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team16: Enter Team Name Here
-    #Team Members:
+    #Team16: Ryan Muetzel
     #######################################
 
 
     elif player == 16:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Ryan Muetzel'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
@@ -572,14 +558,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team17: Enter Team Name Here
-    #Team Members:
+    #Team17: Geny Williams
     #######################################
 
 
     elif player == 17:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Geny Williams'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
@@ -603,7 +588,6 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
     #Team18: Enter Team Name Here
-    #Team Members:
     #######################################
 
 
@@ -633,7 +617,6 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
     #Team19: Enter Team Name Here
-    #Team Members:
     #######################################
 
 
@@ -663,7 +646,6 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
     #Team20: Enter Team Name Here
-    #Team Members:
     #######################################
 
 
