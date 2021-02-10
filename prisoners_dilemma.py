@@ -24,10 +24,10 @@ def play_round(player1, player2, history1, history2, score1, score2):
     (history1, history2, score1, score2)
     '''
 
-    RELEASE = 0 # (R) when both players collude
-    TREAT = 100 # (T) when you betray your partner
+    RELEASE = 0  # (R) when both players collude
+    TREAT = 100  # (T) when you betray your partner
     SEVERE_PUNISHMENT = -500 # (S) when your partner betrays you
-    PUNISHMENT = -250 # (P) when both players betray each other
+    PUNISHMENT = -250  # (P) when both players betray each other
     # Keep T > R > P > S to be a Prisoner's Dilemma
     # Keep 2R > T + S to be an Iterative Prisoner's Dilemma
 
@@ -137,10 +137,10 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
         if getting_team_name:
             return 'Loyal Vengeful'
         else:
-            if len(opponent_history)==0: #It's the first round: collude
+            if len(opponent_history)== 0: #It's the first round: collude
                 return 'c'
             elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray if they were severely punished last time
+                return 'b'  # betray if they were severely punished last time
             else:
                 return 'c' #otherwise collude
 
@@ -544,12 +544,16 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
         if getting_team_name:
             return 'Bawi Thawng'
         else:
-            if len(opponent_history)==0: #It's the first round: collude
+            if len(opponent_history) == 0:  #It's the first round: collude
                 return 'c'
-            elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray if they were severely punished last time
+            elif history[-1] == 'c' and opponent_history[-1]=='b':
+                return 'b'  # betray if they were severely punished last time
+            elif history[-1] == 'b' and opponent_history[-1] == 'b':
+                return 'b'
+            elif opponent_history[-1] == 'c':
+                return 'b'
             else:
-                return 'c' #otherwise collude
+                return 'b'  #otherwise collude
 
 
 
@@ -660,12 +664,16 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
         if getting_team_name:
             return 'Enter Team Name Here'
         else:
-            if len(opponent_history)==0: #It's the first round: collude
+            if len(opponent_history) == 0:  #It's the first round: collude
                 return 'c'
-            elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray if they were severely punished last time
+            elif history[-1] == 'c' and opponent_history[-1] == 'b':
+                return 'b'  # betray if they were severely punished last time
+            elif history[-1] == 'c' and opponent_history[-1] == 'c':
+                return 'b'
+            elif opponent_history[-1] == 'b' and history[-1] == 'b':
+                return 'b'
             else:
-                return 'c' #otherwise collude
+                return 'c'  #otherwise collude
 
 
 
