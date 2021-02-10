@@ -340,8 +340,6 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
                 return 'c'
             elif history[-1] == 'c' and opponent_history[-1] == 'b': #If I collude and they betray, just go into betrayal mode
                 logic_mode = 0
-            elif history[-1] == 'b' and opponent_history[-1] == 'c': #If I betray and they collude, betray once more
-                logic_mode = 0
             if logic_mode == 1: #Looks for the ave and colludes if they have more often then not.
                 countc = 0
                 countb = 0
