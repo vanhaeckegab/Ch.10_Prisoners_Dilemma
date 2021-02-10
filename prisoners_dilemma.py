@@ -542,22 +542,22 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
         if getting_team_name:
             return 'Ryan Muetzel'
         else:
-            if len(opponent_history)==0: #It's the first round: collude
-                return 'c'
-            elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray if they were severely punished last time
+            if len(opponent_history) == 4:      # if it is still the first few rounds then do vengeance thingy
+                if len(opponent_history) == 0:        # It's the first round: collude
+                    return 'c'
+                elif opponent_history[-1] == 'b':
+                    return 'b'          # betray if they were severely punished last time
+                else:
+                    return 'c'          # otherwise collude
             else:
-                return 'c' #otherwise collude
-
-
-
-
-
-
-
-
-
-
+                count_c = 0
+                for i in range(len(opponent_history)):  # find how many times opponent back stabbed
+                    if opponent_history[i] == 'c':
+                        count_c += 1
+                if (count_c + 1) / (len(opponent_history) + 1) > .65:
+                    return 'c'
+                else:
+                    return 'b'
 
 
 
