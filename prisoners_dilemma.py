@@ -305,18 +305,18 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
         if getting_team_name:
             return 'Alex Mears'
         else:
-            if len(opponent_history)==0: #It's the first round: collude
+            avgopp = 0
+            sumopp = 0
+            for i in range(len(opponent_history)):
+                sumopp += ord(opponent_history[i])
+                avgopp = sumopp / len(opponent_history)
+            print(avgopp)
+            if len(opponent_history) == 0:                      # It's the first round: collude
                 return 'c'
-            elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray if they were severely punished last time
+            elif avgopp <= ord("b") + 0.5:
+                return 'b'                                      # if opponent on average betrays, then collude
             else:
-                return 'c' #otherwise collude
-
-
-
-
-
-
+                return 'c'                                      # otherwise betray
 
 
 
