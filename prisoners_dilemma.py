@@ -160,8 +160,6 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
         if getting_team_name:
             return 'Aaron Caltrider'
         else:
-            if play_round == round:
-                return 'b'
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
             if len(opponent_history)>=2 and opponent_history[-2]=='b': # If they keep betraying, betray also
