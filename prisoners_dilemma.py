@@ -331,15 +331,33 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
     elif player == 9:
+
         if getting_team_name:
             return 'Daniel Mitchell'
         else:
+            logic_mode = 1
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
-            elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray if they were severely punished last time
-            else:
-                return 'c' #otherwise collude
+            elif history[-1] == 'c' and opponent_history[-1] == 'b': #If I collude and they betray, just go into betrayal mode
+                logic_mode = 0
+            elif history[-1] == 'b' and opponent_history[-1] == 'c': #If I betray and they collude, betray once more
+                logic_mode = 0
+            if logic_mode == 1: #Looks for the ave and colludes if they have more often then not.
+                countc = 0
+                countb = 0
+                for i in opponent_history:
+                    if i == "c":
+                        countc = countc + 1
+                    if i == "b":
+                        countb = countb + 1
+                if countc >= countb:
+                    return 'c' # betray if they were severely punished last time
+                elif countb > countc:
+                    return 'b' # betray if they were severely punished last time
+                else:
+                    return 'c' #otherwise collude
+            if logic_mode == 0:
+                return "b"
 
 
 
