@@ -228,9 +228,9 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
             elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray if they were severely punished last time
+                return 'c' # lets just be a good friend
             else:
-                return 'c' #otherwise collude
+                return 'c' #otherwise collude. we will try to get a good score like this
 
 
 
