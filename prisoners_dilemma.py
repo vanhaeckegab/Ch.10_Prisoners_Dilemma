@@ -413,20 +413,316 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team12: Jacob Perman
+    #Team12: Jake Perman
     #######################################
 
 
     elif player == 12:
         if getting_team_name:
-            return 'Jacob Perman'
+            return 'Jake Perman'
+
         else:
-            if len(opponent_history)==0: #It's the first round: collude
+            # calculate the level of trust with your partner
+            def calc_trust():
+                # you've known your partner for a while so your base level of trust is pretty good
+                t = 70
+                # re-evaluate your level of trust each round
+                if len(history) <= 7:
+                    f = len(history)
+                else:
+                    f = 7
+                for r in range(f):
+                    x = r * -1
+                    # build trust if you and your partner colluded last round
+                    if opponent_history[x] == 'c' and history[x] == 'c':
+                        t += 15
+                    # your partners betrayal last round shattered your trust
+                    elif opponent_history[x] == 'b' and history[x] == 'c':
+                        t -= 35
+                    # you guys both betrayed each other, no trust is lost or gained
+                    elif opponent_history[x] == 'b' and history[x] == 'b':
+                        t -= 0
+                    # prevent trust from going above 100 or below 0
+                if t < 0:
+                    t = 0
+                elif t > 100:
+                    t = 100
+                return t
+
+            # calculate the consistency and tendencies of your partner
+            def calc_cons():
+                c_total = 0  # counter for c's
+                b_total = 0  # counter for b's
+                consist = 0
+                # calculate your partners behavioral tendency towards either collusion or betrayal thus far
+                for each in opponent_history:
+                    if each == 'c':
+                        c_total += 1
+                    else:
+                        b_total += 1
+                if b_total > c_total:  # set the behavioral tendency to whichever has greater count
+                    tend = 'b'
+                else:
+                    tend = 'c'
+
+                # if several rounds have passed, check your partner's recent behavior compared to overall tendency
+                if len(history) >= 2:
+                    c_total = 0
+                    b_total = 0
+                    # calculate the recent (last 5 moves) behavioral tendency of your partner
+                    for each in opponent_history[-6:-1]:
+                        if each == 'c':
+                            c_total += 1
+                        else:
+                            b_total += 1
+
+                    # one set of recency trends is used in early rounds, the other in late
+                    if b_total > c_total:
+                        if len(history) >= 20:
+                            lat_tend = 'b'
+                            e_trend = None
+                        else:
+                            e_trend = 'b'
+                            lat_tend = None
+                    else:
+                        if len(history) >= 20:
+                            lat_tend = 'c'
+                            e_trend = None
+                        else:
+                            e_trend = 'c'
+                            lat_tend = None
+                else:
+                    lat_tend = None
+                    e_trend = None
+                # calculate how consistent your partner is based on recent behavior
+                hist = 0
+                if len(opponent_history) <= 8:  # set the value testing range based on total length of the list
+                    e = len(opponent_history) - 1
+                    s = 0
+                elif len(opponent_history) > 8:
+                    e = (len(opponent_history) - len(opponent_history)) + 8 - 1
+                    s = 0
+                for i in range(s, e):
+                    m = -i
+                    n = -i - 1
+                    if opponent_history[m] == opponent_history[n]:  # compare adjacent values to each other
+                        hist += 1
+                if hist >= 5:  # if partner has made the same move 5+ times, they are consistent
+                    consist = 100
+                elif 5 > hist > 2:  # if partner has made the same move 3 or 4 times, they're somewhat consistent
+                    consist = 60
+                elif hist == 2:  # if the same move has been made only twice, only slightly consistent
+                    consist = 30
+                else:  # otherwise they are not consistent at all
+                    consist = 0
+                # return all the values
+                return consist, tend, lat_tend, hist, e_trend
+
+            # keep track of your own tendencies so you can predict your partners reaction
+            def my_tend():
+                c_tend = 0
+                b_tend = 0
+                # calculate your own overall tendency towards collusion or betrayal
+                for h in history:
+                    if h == 'c':
+                        c_tend += 1
+                    else:
+                        b_tend += 1
+
+                if c_tend > b_tend:
+                    tend = 'c'
+                else:
+                    tend = 'b'
+
+                z = 0
+                v = []
+                # check whether you've fallen into a consistent behavioral pattern
+                if len(history) > 6:
+                    for x in range(1, 7):
+                        if history[-x] == history[-x - 1]:
+                            z += 1
+                            v.append(history[-x])
+                        else:
+                            break
+                if z >= 4:
+                    pattern = True
+                else:
+                    z = 0
+                    pattern = False
+                # if you've developed a pattern, which way does it tend towards?
+                if pattern:
+                    lett = v[0]
+                else:
+                    lett = 'n'
+                return tend, pattern, lett, z
+
+            # once a few rounds have passed, base your decisions off analysis rather than whimsy
+            if len(opponent_history) >= 2:
+                cons = calc_cons()[0]  # consistency of partner
+                en_tend = calc_cons()[1]  # the tendency of your partner
+                trust = calc_trust()  # the trust you have with your partner
+                if len(history) > 2:
+                    m_tend = my_tend()[0]  # overall behavioral tendency of yourself
+                    m_patt = my_tend()[1]  # whether you've developed a pattern [T/F]
+                    p_trend = calc_cons()[2]  # recent tendencies of your partner
+                    let_cons = my_tend()[2]  # if you've developed a pattern, what is it
+                    times = my_tend()[3]  # how many times in a row you have made the same move
+                    p_hist = calc_cons()[3]  # how many times in a row your partner has made the same move
+                    early_trend = calc_cons()[4]  # trend used only in the first 10 or so moves
+
+            if len(
+                    opponent_history) <= 2: # No need to betray your partner on your first foray into the world of crime
+                if len(history) > 0 and opponent_history[-1] == 'b':
+                    return 'b'
+                else:
+                    return 'c'
+            elif 2 < len(history) < 5:  # Run on turns 2 and 3
+                # if your partner colluded the first time around, collude with them again
+                if opponent_history[0] == 'b':
+                    return 'b'
+                elif opponent_history[-1] == 'c':
+                    return 'c'
+                elif opponent_history[-1] == 'b':
+                    return 'b'
+                else:
+                    return 'c'
+            # elif len(history) == 7 and history[4] == 'b':
+            #     return 'b'
+            zed = len(history)
+            # if 6 rounds have passed and your partner has trended towards betrayal for five rounds, run this
+            if 9 > len(history) >= 6 and p_hist >= 5 and p_trend == 'b':
+                if m_patt is True and let_cons == 'c':  # if you've developed a pattern of collusion
+                    return 'b'
+                else:  # if your partner and you have been betraying each other, try colluding
+                    return 'c'
+            # if in the first few rounds you betray; make ammends and collude
+            elif 5 >= len(history) > 3 and history[-2] == 'b' and opponent_history[-1] != 'b':
                 return 'c'
-            elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray if they were severely punished last time
+            elif p_trend == 'b' and let_cons == 'c':
+                return 'b'
+            # between rounds 20 and 35, develop sporadic behavior to throw your partner off your trail and gather info
+            if 35 > len(history) > 20 and cons != 100:
+                if en_tend == 'c' and trust >= 80:  # you've built up good trust, and your partner tended to collusion
+                    if opponent_history[-1] != 'b':
+                        return 'c'  # 25% chance of betrayal, 75% chance of collusion
+                    else:
+                        return 'b'
+                elif en_tend == 'c' and 50 < trust < 80:  # overall tendency towards collusion, but trust isn't high
+                    if opponent_history[-1] != 'b':  # if your partner didn't betray you last round
+                        if times <= 3:  # if you haven't developed a behavioral pattern, collude with your partner
+                            return 'c'
+                        else:  # betray your partner if you've become too predictable
+                            return 'b'
+                    else:
+                        return 'b'
+                else:  # if your partner has been trending towards betrayal, betray them back
+                    return 'b'
+            # run if partners consistency is only 30
+            elif cons == 30 and len(history) > 5:
+                if en_tend == 'c':  # partner has tended towards collusion, but is inconsistent overall
+                    num = random.randint(1, 3)  # randomly pick a number, if 2 collude, otherwise betray
+                    if num == 2:
+                        return 'c'
+                    else:
+                        return 'b'
+                # if your partner has been inconsistent and trended towards betrayal; betray them
+                else:
+                    return 'b'
+            # run if partner's consistency is 60
+            elif cons == 60:
+                if en_tend == 'b':  # if your partner has been somewhat consistently betraying you; betray them back
+                    if history[-1] == 'b' and opponent_history[-1] == 'c':
+                        return 'b'
+                    elif history[-1] == 'c' and opponent_history[-1] == 'c':
+                        return 'c'
+                    else:
+                        return 'b'
+                # if your partner has been somewhat consistent with collusion
+                elif en_tend == 'c':  # collude only if you haven't became too predictable
+                    if history[-1] == 'b' and opponent_history[-1] == 'c':
+                        return 'b'
+                    elif p_trend == 'c' or early_trend == 'c':  # their recent trend has been to collude; betray them
+                        if opponent_history[-1] == 'c':
+                            return 'c'
+                        else:
+                            return 'b'
+                    elif p_hist > 3 and opponent_history[-1] == 'b':
+                        return 'b'
+                    elif let_cons == 'c':  # you've developed a pattern of collusion, your partner has not; betray them
+                        return 'b'
+                    else:
+                        return 'c'
+                # will probably never run, but just in case, collude with them
+                else:
+                    return 'c'
+            # if the partner has 100 consistency; run this
+            elif cons == 100:
+                if opponent_history[-1] == 'c' and history[-1] == 'b':
+                    for each in history:
+                        if each == 'b' and opponent_history[history.index(each)] == 'c' and len(
+                                history) - 1 != history.index(each):
+                            if opponent_history[history.index(each) + 1] == 'b':
+                                return 'b'
+                            else:
+                                return 'c'
+                    return 'b'
+                # if you and your partner haven't betrayed each other in a while; betray them and make a quick buck
+                elif p_trend == 'c' and times == 6 or early_trend == 'c' and times == 6:  # don't be too predictable
+                    if opponent_history[-1] != 'b':
+                        for each in history:
+                            x = history.index(each)
+                            if each == 'b' and opponent_history[x] == 'c' and len(history) - 1 != x:
+                                if opponent_history[x + 1] == 'b':
+                                    return 'b'
+                                else:
+                                    return 'c'
+                        return 'c'
+                    else:
+                        return 'b'
+                elif early_trend == 'b' and len(
+                        history) == 6:  # if your partners early game trend has been betrayal; try colluding
+                    return 'c'
+                # if your partner hasn't betrayed you too recently, but you have  betrayed them; consider gaining trust
+                elif opponent_history[-1] == 'c' and opponent_history[-2] == 'c' and history[-1] == 'b':
+                    return 'b'
+                # if enemy has consistently tended towards collusion; continue to collude
+                elif en_tend == 'c' and p_trend == 'c' or early_trend == 'c':
+                    if opponent_history[-1] != 'b':
+                        return 'c'
+                    else:
+                        return 'b'
+                elif m_patt is True and let_cons == 'b' and opponent_history[
+                    0] != 'b':  # if you've developed a patter of betrayal; try colluding
+                    return 'b'
+                # if your partner has consistently betrayed you; betray them back
+                else:
+                    return 'b'
+            # if your partner hasn't been consistent, but you have some trust, maybe give them a chance to build trust
+            elif cons == 0:
+                if opponent_history[-1] == 'c' and history[-1] == 'b':
+                    for each in history:
+                        if each == 'b' and opponent_history[history.index(each)] == 'c' and len(
+                                history) - 1 != history.index(each):
+                            if opponent_history[history.index(each) + 1] == 'b':
+                                return 'b'
+                            else:
+                                return 'c'
+                    return 'b'
+                if opponent_history[-1] == 'b' and history[-2] == 'b':
+                    return 'c'
+                elif trust >= 50:
+                    ch = random.choices(['c', 'b'], [2, 4], k=1)[
+                        0]  # twice the odds of betrayal rather than collusion
+                    zed += 0
+                    return ch
+                # if there's been low consistency and trust, betray your partner
+                elif trust < 30:
+                    return 'b'
+                else:  # when all else fails, randomly decide whether to betray or collude
+                    zed += 0
+                    return 'c'
             else:
-                return 'c' #otherwise collude
+                return 'c'
 
 
 
