@@ -362,21 +362,27 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team10: Enter Team Name Here
-    #Team Members:
+    #Team10: Sir_Theodore_III(His squire:Jacobson
+    #Team Members: Will Jacobson
     #######################################
 
 
     elif player == 10:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Sir_Theodore_III(His squire:Jacobson'
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
+            elif len(opponent_history) == 1:
+                return 'b'
+            elif len(opponent_history) == 2:
+                return 'c'
             elif history[-1]=='c' and opponent_history[-1]=='b':
                 return 'b' # betray if they were severely punished last time
+            elif history[-1] == 'c' and opponent_history[-1] == 'c':
+                return 'b'
             else:
-                return 'c' #otherwise collude
+                return 'b' #otherwise collude
 
 
 
@@ -385,13 +391,7 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-
-
-
-
-
-
-
+#394
     #Team11: Enter Team Name Here
     #Team Members:
     #######################################
