@@ -514,8 +514,9 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
     #Team15: Bald Boy (Gabe in case you were confused) Team Members: Gabe Van Haecke
     elif player == 15:
-        if getting_team_name:
-            return 'Bald Boy (Gabe in case you were confused)'
+        betray = 0
+        collude = 0
+        if getting_team_name: return 'Bald Boy (Gabe in case you were confused)'
         else:
             def patterncheck(start, end):
                 if opponent_history[start:start + 5] == opponent_history[end - 5:end]: return 6
@@ -525,17 +526,23 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
             def patternres():
                 if opponent_history[0 + (len(history) - 12)] == "b": return "b"
                 else:
-                    if random.randint(1, 100) > 10:
-                        return "c"
-                    else:
-                        return "b"
+                    if random.randint(1, 100) > 5: return "b"
+                    else: return "c"
             if len(history) <= 11:
-                start = "BBBBCBCBCCCC"
+                start = "bbbbcbcbcccc"
                 return start[len(history)]
-            n = patterncheck((len(history)%2)*12-1, (len(history)%2)*12)
-            if n > 0:
-                patternres()
-            elif
+            elif patterncheck((len(history)%2)*12-1, (len(history)%2)*12) > 0: return patternres()
+            else:
+                if opponent_history[1:11] == history[0:10]: return "b"
+                else:
+                    for i in opponent_history[len(history)-11:len(history)-1]:
+                        if i == "b": betray += 1
+                        elif i == "c": collude += 1
+                    if betray >= collude: return "b"
+                    else:
+                        if random.randint(1, 100) > 10: return "c"
+                        else: return "b"
+
     #Team16: Enter Team Name Here
     #Team Members:
     #######################################
