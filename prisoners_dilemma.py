@@ -159,7 +159,7 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
         if getting_team_name:
             return 'I dont know how for loops work'
         else:
-            if len(opponent_history)==0: #It's the first round: collude
+            if len(opponent_history)==0: #It's the first round: collude.
                 return 'c'
             elif history[-1]=='c' and opponent_history[-1]=='c':
                 return 'c' # If they are colluding, collude with them or else betray
