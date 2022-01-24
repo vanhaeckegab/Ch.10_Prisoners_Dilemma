@@ -401,29 +401,29 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
     elif player == 11:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Placeholder Team Name (v2)'
         else:
-            if len(opponent_history)==0: #It's the first round: collude
+            if len(opponent_history) == 0: #It's the first round: collude
                 return 'c'
-            elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray if they were severely punished last time
+            elif history[-1] == 'c' and opponent_history[-1] == 'b':
+                return 'b'
+            elif history[-1] == 'b':
+                return 'b'
             else:
-                return 'c' #otherwise collude
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                return 'c'
+# Why don’t orphans work as computer repair technicians?  Because they can’t find the motherboard
+# The oldest computer can be traced back to Adam and Eve. It was an apple but with extremely limited memory. Just 1 byte. And then everything crashed. XDXDXD
+# Where did the software developer go?! I don’t know, he ransomware!
+# Bill Gates teaches a kindergarten class to count to ten. “1, 2, 3, 3.1, 95, 98, ME, 2000, XP, Vista, 7, 8, 10, 11"
+# Why did Wi-Fi and the computer get married?  Because they had a connection.
+# What did the processor say when it was being overclocked?  “Stop it! It hertz so much!”
+# How did the computer get out of the house?  It used windows.
+# A computer is a lot like an air conditioner, it works really well until you open Windows
+# Software gets Slower Faster while Hardware gets Faster Slower.
+# I started a band called 999 megabytes… we still haven’t gotten a gig...
+# Some people are like a software update. When I see them I think, “Not now.”
+# Everyone's telling me to stop typing bad jokes or else they'll slam my head into the keyboard, but I don't think I ajlkfsdhnvkwr;anhfkclajwefvuqigqrw'
+# So I want to dress up as a UDP packet for Halloween, but I don’t know if anyone will get it. XDXDXD
     #Team12: Enter Team Name Here
     #Team Members:
     #######################################
