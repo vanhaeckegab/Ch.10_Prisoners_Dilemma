@@ -219,15 +219,13 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
     elif player == 5:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'Gavin'
         else:
-            if len(opponent_history)==0: #It's the first round: collude
+            x = random.randint(0,1)
+            if x == 1:
                 return 'c'
-            elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray if they were severely punished last time
             else:
-                return 'c' #otherwise collude
-
+                return 'b'
 
 
 
