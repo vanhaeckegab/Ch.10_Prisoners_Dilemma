@@ -152,21 +152,25 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team3: Enter Team Name Here
-    #Team Members:
-    #######################################
-
-
+    #Team3: Enter Team Name Here I don't know how for loops work
+    #Team Members: Kai
+    ####################################### m
     elif player == 3:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return 'I dont know how for loops work'
         else:
-            if len(opponent_history)==0: #It's the first round: collude
+            if len(opponent_history)==0: #It's the first round: collude.
                 return 'c'
+            elif history[-1]=='c' and opponent_history[-1]=='c':
+                return 'c' # If they are colluding, collude with them or else betray
+            elif history[-1]=='b' and opponent_history[-1]=='c':
+                return 'b' # If they are colluding, collude with them or else betray
             elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray if they were severely punished last time
+                return 'b' # If they are colluding, collude with them or else betray \
+            elif history[0]=='b' and opponent_history[0]=='c':
+                return 'b' # If they are colluding, collude with them or else betray
             else:
-                return 'c' #otherwise collude
+                return 'b' #otherwise betray
 
 
 
