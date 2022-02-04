@@ -264,7 +264,7 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
     #######################################
 
 
-   elif player == 7:
+    elif player == 7:
         if getting_team_name:
             return 'Will F Team'
         else:
@@ -534,11 +534,11 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
                     if random.randint(1, 100) > 5: return "b"
                     else: return "c"
             if len(history) <= 11:
-                start = "bbbbcbcbcccc"
+                start = "ccccbcbcbbbb"
                 return start[len(history)]
             elif patterncheck((len(history)%2)*12-1, (len(history)%2)*12) > 0: return patternres()
             else:
-                if opponent_history[1:11] == history[0:10]: return "b"
+                if opponent_history[1:11] == history[0:10]: return "c"
                 else:
                     for i in opponent_history[len(history)-11:len(history)-1]:
                         if i == "b": betray += 1
